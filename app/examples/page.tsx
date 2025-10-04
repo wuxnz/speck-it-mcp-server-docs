@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { DocumentationLayout } from '@/src/components/DocumentationLayout';
-import { Check, Copy } from 'lucide-react';
+import { Check, Copy, ExternalLink, Github } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 

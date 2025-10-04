@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { useTheme } from '@/src/components/ThemeProvider';
 import { Badge } from '@/src/components/ui/badge';
 import {
   Card,
@@ -10,7 +11,6 @@ import {
   CardTitle,
 } from '@/src/components/ui/card';
 import { Progress } from '@/src/components/ui/progress';
-import { useThemeStore } from '@/src/lib/store';
 import { AlertCircle, CheckCircle2, Circle, Clock, Pause, Play, RefreshCw } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -55,7 +55,7 @@ export default function TaskManager({
   const [isAutoRefreshing, setIsAutoRefreshing] = useState(autoRefresh);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const { theme } = useThemeStore();
+  const { theme } = useTheme();
 
   // Mock Speck-It MCP server integration
   const mockSpeckItIntegration = {
@@ -327,7 +327,7 @@ export default function TaskManager({
             dependencies: ['T017'],
             prerequisites: ['spec_exists', 'plan_exists'],
             estimated_hours: 4,
-            actual_hours: null,
+            actual_hours: undefined,
             status: 'pending',
             tags: ['implementation'],
           },
@@ -341,7 +341,7 @@ export default function TaskManager({
             dependencies: ['T018'],
             prerequisites: ['spec_exists', 'plan_exists'],
             estimated_hours: 6,
-            actual_hours: null,
+            actual_hours: undefined,
             status: 'pending',
             tags: ['integration'],
           },
@@ -354,7 +354,7 @@ export default function TaskManager({
             dependencies: ['T019'],
             prerequisites: ['spec_exists', 'plan_exists'],
             estimated_hours: 4,
-            actual_hours: null,
+            actual_hours: undefined,
             status: 'pending',
             tags: ['quality'],
           },
@@ -367,7 +367,7 @@ export default function TaskManager({
             dependencies: ['T020'],
             prerequisites: ['spec_exists', 'plan_exists'],
             estimated_hours: 2,
-            actual_hours: null,
+            actual_hours: undefined,
             status: 'pending',
             tags: ['documentation'],
           },
@@ -380,7 +380,7 @@ export default function TaskManager({
             dependencies: ['T021'],
             prerequisites: ['spec_exists', 'plan_exists'],
             estimated_hours: 3,
-            actual_hours: null,
+            actual_hours: undefined,
             status: 'pending',
             tags: ['testing', 'quality'],
           },

@@ -2,7 +2,37 @@ import { Button } from '@/components/ui/button';
 import { DocumentationLayout } from '@/src/components/DocumentationLayout';
 import { Code, Github, MessageSquare, Users } from 'lucide-react';
 
-const contributingSections = [
+type GuidelineObject = {
+  title: string;
+  description: string;
+  items: string[];
+};
+
+type ContributingSection = {
+  title: string;
+  description: string;
+  steps?: any[];
+  guidelines?: (string | GuidelineObject)[];
+  process?: any[];
+  reviewSteps?: string[];
+};
+
+function isStringArray(arr: any[]): arr is string[] {
+  return arr.length > 0 && typeof arr[0] === 'string';
+}
+
+function isGuidelineObjectArray(arr: any[]): arr is GuidelineObject[] {
+  return (
+    arr.length > 0 &&
+    typeof arr[0] === 'object' &&
+    arr[0] !== null &&
+    'title' in arr[0] &&
+    'description' in arr[0] &&
+    'items' in arr[0]
+  );
+}
+
+const contributingSections: ContributingSection[] = [
   {
     title: 'Getting Started',
     description: 'How to set up your development environment and start contributing.',
@@ -160,31 +190,28 @@ export default function ContributingPage() {
                 </div>
               )}
 
-              {section.guidelines &&
-                Array.isArray(section.guidelines) &&
-                typeof section.guidelines[0] === 'object' &&
-                'title' in section.guidelines[0] && (
-                  <div className="grid gap-6 md:grid-cols-2">
-                    {section.guidelines.map((guideline: any, guidelineIndex: number) => (
-                      <div key={guidelineIndex} className="space-y-3 rounded-lg border p-4">
-                        <h3 className="font-semibold flex items-center space-x-2">
-                          {guideline.title === 'Code Style' && <Code className="h-4 w-4" />}
-                          {guideline.title === 'Testing' && <Users className="h-4 w-4" />}
-                          {guideline.title === 'Documentation' && (
-                            <MessageSquare className="h-4 w-4" />
-                          )}
-                          <span>{guideline.title}</span>
-                        </h3>
-                        <p className="text-sm text-muted-foreground">{guideline.description}</p>
-                        <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                          {guideline.items.map((item: string, itemIndex: number) => (
-                            <li key={itemIndex}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                )}
+              {section.guidelines && isGuidelineObjectArray(section.guidelines) && (
+                <div className="grid gap-6 md:grid-cols-2">
+                  {section.guidelines.map((guideline, guidelineIndex) => (
+                    <div key={guidelineIndex} className="space-y-3 rounded-lg border p-4">
+                      <h3 className="font-semibold flex items-center space-x-2">
+                        {guideline.title === 'Code Style' && <Code className="h-4 w-4" />}
+                        {guideline.title === 'Testing' && <Users className="h-4 w-4" />}
+                        {guideline.title === 'Documentation' && (
+                          <MessageSquare className="h-4 w-4" />
+                        )}
+                        <span>{guideline.title}</span>
+                      </h3>
+                      <p className="text-sm text-muted-foreground">{guideline.description}</p>
+                      <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                        {guideline.items.map((item, itemIndex) => (
+                          <li key={itemIndex}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {section.process && (
                 <div className="space-y-4">
@@ -207,9 +234,9 @@ export default function ContributingPage() {
                 </div>
               )}
 
-              {Array.isArray(section.guidelines) && typeof section.guidelines[0] === 'string' && (
+              {section.guidelines && isStringArray(section.guidelines) && (
                 <div className="space-y-3">
-                  {section.guidelines.map((guideline: string, guidelineIndex: number) => (
+                  {section.guidelines.map((guideline, guidelineIndex) => (
                     <div key={guidelineIndex} className="flex items-start space-x-3">
                       <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-medium mt-0.5">
                         {guidelineIndex + 1}

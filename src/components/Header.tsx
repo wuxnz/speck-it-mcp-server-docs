@@ -30,7 +30,7 @@ export function Header() {
             </Link>
           </div>
 
-          <div className="flex items-center space-x-2 md:justify-end sm:hidden">
+          <div className="flex items-center space-x-2 md:justify-end sm:hidden lg:flex">
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-2">
               <Button variant="ghost" size="sm" asChild>
