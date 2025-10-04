@@ -1,0 +1,35 @@
+{
+  "PROJ-001": {
+    "task_id": "PROJ-001",
+    "feature_id": "001-speck-it-mcp-server-docs",
+    "description": "Build the Speck-It MCP Server Documentation Site - a comprehensive documentation hub using TypeScript, Shadcn UI, Next.js, Tailwind CSS, and Zustand for state management",
+    "task_type": "implementation",
+    "priority": 2,
+    "status": "pending",
+    "dependencies": [],
+    "prerequisites": [
+      "constitution_exists",
+      "feature_root_registered",
+      "spec_exists",
+      "plan_exists",
+      "tasks_exist"
+    ],
+    "estimated_hours": 40.0,
+    "actual_hours": null,
+    "assigned_to": null,
+    "created_at": "2025-10-04T01:19:04.279084Z",
+    "updated_at": "2025-10-04T01:19:04.279097Z",
+    "completed_at": null,
+    "notes": [],
+    "tags": [
+      "documentation",
+      "nextjs",
+      "typescript",
+      "shadcn-ui",
+      "dark-theme",
+      "zustand"
+    ],
+    "blocked_by": [],
+    "blocks": []
+  }
+}
