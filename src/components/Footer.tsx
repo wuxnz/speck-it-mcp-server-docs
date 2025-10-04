@@ -29,13 +29,13 @@ export function Footer() {
             </Link>
           </Button>
 
-          <Button variant="ghost" size="sm" asChild>
+          {/* <Button variant="ghost" size="sm" asChild>
             <Link href="/docs">Documentation</Link>
           </Button>
 
           <Button variant="ghost" size="sm" asChild>
             <Link href="/support">Support</Link>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </footer>
